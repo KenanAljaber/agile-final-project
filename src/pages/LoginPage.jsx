@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import { useUser } from '../context/UserContext.jsx';
+
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -53,7 +54,8 @@ const LoginPage = () => {
             {isAuthenticating ? 'Signing in...' : 'Sign in'}
           </button>
           <div className="helper-row">
-            <span>Need access? Contact your admin.</span>
+            <Link className="link" to="/signup">Don't have an account. Sign up</Link>
+            
             <span className="link">Reset password</span>
           </div>
         </form>

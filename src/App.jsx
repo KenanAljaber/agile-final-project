@@ -34,6 +34,6 @@ const App = () => (
     <ChatbotWidget />
   </>
 
-
+);
 
 export default App;
