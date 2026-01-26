@@ -34,6 +34,9 @@ const AppsPage = () => {
           <h1>Project {projectId}</h1>
           <p className="subtext">Launch a creative application for this workspace.</p>
         </div>
+        <button className="ghost" type="button">
+          + New application
+        </button>
       </header>
 
       <section className="gallery">

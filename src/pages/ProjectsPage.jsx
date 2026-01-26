@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 import { useUser } from '../context/UserContext.jsx';
 
-const initialProjects = [
+const projects = [
   {
     id: 'aurora',
     title: 'Aurora Brand System',
@@ -31,30 +30,6 @@ const initialProjects = [
 
 const ProjectsPage = () => {
   const { user, logout } = useUser();
-  const [projects, setProjects] = useState(initialProjects);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [newProjectName, setNewProjectName] = useState('');
-  const [newProjectDescription, setNewProjectDescription] = useState('');
-
-  const handleCreateProject = (event) => {
-    event.preventDefault();
-    if (!newProjectName.trim()) {
-      return;
-    }
-    const slug = newProjectName.toLowerCase().replace(/\s+/g, '-');
-    setProjects((prev) => [
-      {
-        id: slug,
-        title: newProjectName,
-        updatedAt: 'Just now · 1 collaborator',
-        description: newProjectDescription || 'New creative workspace.'
-      },
-      ...prev
-    ]);
-    setNewProjectName('');
-    setNewProjectDescription('');
-    setIsModalOpen(false);
-  };
 
   return (
     <div className="page">
@@ -72,9 +47,6 @@ const ProjectsPage = () => {
               <span>{user.role}</span>
             </div>
           </div>
-          <button className="primary" type="button" onClick={() => setIsModalOpen(true)}>
-            + New project
-          </button>
           <button className="ghost" type="button" onClick={logout}>
             Sign out
           </button>
@@ -96,48 +68,6 @@ const ProjectsPage = () => {
           </Link>
         ))}
       </section>
-
-      {isModalOpen ? (
-        <div className="modal">
-          <div className="modal__card">
-            <div className="modal__header">
-              <h2>Create a new project</h2>
-              <button className="ghost" type="button" onClick={() => setIsModalOpen(false)}>
-                Close
-              </button>
-            </div>
-            <form className="modal__form" onSubmit={handleCreateProject}>
-              <label className="field">
-                <span>Project title</span>
-                <input
-                  type="text"
-                  placeholder="e.g. Atlas Rebrand"
-                  value={newProjectName}
-                  onChange={(event) => setNewProjectName(event.target.value)}
-                  required
-                />
-              </label>
-              <label className="field">
-                <span>Project description</span>
-                <textarea
-                  rows="3"
-                  placeholder="Short summary of the project goals."
-                  value={newProjectDescription}
-                  onChange={(event) => setNewProjectDescription(event.target.value)}
-                />
-              </label>
-              <div className="modal__actions">
-                <button className="ghost" type="button" onClick={() => setIsModalOpen(false)}>
-                  Cancel
-                </button>
-                <button className="primary" type="submit">
-                  Create project
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      ) : null}
     </div>
   );
 };

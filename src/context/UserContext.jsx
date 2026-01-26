@@ -26,7 +26,9 @@ export const UserProvider = ({ children }) => {
   const login = async (credentials) => {
     setIsAuthenticating(true);
     try {
-      await apiClient.post('/auth/login', credentials);
+
+      // await apiClient.post('/auth/login', credentials);
+
       setUser(demoUser);
       setToken('demo-token');
       window.localStorage.setItem('authToken', 'demo-token');
