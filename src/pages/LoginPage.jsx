@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useUser } from '../context/UserContext.jsx';
 
 const LoginPage = () => {
@@ -55,10 +55,6 @@ const LoginPage = () => {
           <div className="helper-row">
             <span>Need access? Contact your admin.</span>
             <span className="link">Reset password</span>
-          </div>
-          <div className="helper-row">
-            <span>New here?</span>
-            <Link className="link" to="/signup">Create an account</Link>
           </div>
         </form>
       </div>

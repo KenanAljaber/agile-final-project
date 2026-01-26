@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage.jsx';
+
 import SignupPage from './pages/SignupPage.jsx';
 import ProjectsPage from './pages/ProjectsPage.jsx';
 import AppsPage from './pages/AppsPage.jsx';
@@ -32,6 +33,7 @@ const App = () => (
     </Routes>
     <ChatbotWidget />
   </>
-);
+
+
 
 export default App;
